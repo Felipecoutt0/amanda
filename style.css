@@ -1,135 +1,244 @@
+/* Importando fonte manuscrita e sans-serif */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Pacifico', cursive;
-    background-color: #ffe6f0;
-    overflow-x: hidden;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(to bottom right, #ffd6e8, #e6ccff);
+  overflow-x: hidden;
+  position: relative;
+  color: #5c0a3d;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+header h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  color: #d6336c;
+}
+
+.quote {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #8e245e;
+  margin-top: 10px;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px 20px;
+  flex-wrap: wrap;
+}
+
+.polaroid {
+  width: 160px;
+  border: 8px solid #fff;
+  box-shadow: 5px 8px 15px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+.polaroid:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 6px 10px 20px rgba(0,0,0,0.2);
+}
+
+.timeline {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 30px auto;
+  max-width: 600px;
+  border-radius: 15px;
+}
+
+.timeline h2 {
+  font-family: 'Pacifico', cursive;
+  margin-bottom: 15px;
+  color: #b83280;
+}
+
+.timeline ul {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  margin: 12px 0;
+  font-size: 1.1em;
+}
+
+.love-letter {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.love-letter button {
+  background: linear-gradient(135deg, #ff80ab, #e91e63);
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1em;
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+  transition: all 0.3s ease;
+}
+
+.love-letter button:hover {
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  transform: scale(1.05);
+}
+
+#letter {
+  margin-top: 25px;
+  color: #6a004c;
+  font-size: 1.2em;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  header {
-    text-align: center;
-    padding: 40px 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+/* Corações flutuando */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ffb6c1;
+  transform: rotate(45deg);
+  animation: float 7s linear infinite;
+  opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ffb6c1;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -9px;
+  left: 0;
+}
+
+.heart::after {
+  left: -9px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    bottom: -10px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+    transform: translateX(-40px) rotate(360deg);
+  }
+}
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2em;
+  }
+
   .quote {
-    font-size: 1.2em;
-    color: #d6336c;
-  }
-  
-  .gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .polaroid {
-    width: 150px;
-    border: 10px solid white;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    transform: rotate(-3deg);
-    transition: transform 0.3s ease;
-  }
-  
-  .polaroid:hover {
-    transform: scale(1.05) rotate(0deg);
-  }
-  
-  .timeline {
-    text-align: center;
-    padding: 30px;
-  }
-  
-  .timeline ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .timeline li {
-    margin: 10px 0;
-    font-size: 1.1em;
-  }
-  
-  .love-letter {
-    text-align: center;
-    padding: 30px;
-  }
-  
-  .love-letter button {
-    background-color: #ff80ab;
-    border: none;
-    color: white;
-    padding: 10px 20px;
     font-size: 1em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 0 10px;
   }
-  
-  .love-letter button:hover {
-    background-color: #ff4081;
+
+  .gallery {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .hidden {
-    display: none;
-    margin-top: 20px;
-    color: #880e4f;
-    font-size: 1.2em;
+
+  .polaroid {
+    width: 80%;
+    max-width: 250px;
+    transform: rotate(0deg);
   }
-  
-  .hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
+
+  .timeline {
+    padding: 20px 15px;
+    font-size: 1em;
   }
-  
-  .heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: pink;
-    transform: rotate(45deg);
-    animation: float 6s linear infinite;
+
+  .love-letter button {
+    font-size: 1em;
+    padding: 10px 20px;
   }
-  
-  .heart::before,
-  .heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: pink;
-    border-radius: 50%;
+
+  #letter {
+    font-size: 1em;
+    padding: 15px;
   }
-  
-  .heart::before {
-    top: -10px;
-    left: 0;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8em;
   }
-  
-  .heart::after {
-    left: -10px;
-    top: 0;
+
+  .quote {
+    font-size: 0.95em;
   }
-  
-  @keyframes float {
-    0% {
-      bottom: -10px;
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      bottom: 100%;
-      opacity: 0;
-      transform: translateX(-30px) rotate(360deg);
-    }
+
+  .timeline li {
+    font-size: 1em;
   }
-  
+
+  .love-letter button {
+    font-size: 0.95em;
+    padding: 8px 18px;
+  }
+
+  #letter {
+    font-size: 0.95em;
+  }
+}
