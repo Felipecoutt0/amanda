@@ -38,7 +38,8 @@ header h1 {
 }
 
 .polaroid {
-  width: 160px;
+  width: 160px
+  height 160px;
   border: 8px solid #fff;
   box-shadow: 5px 8px 15px rgba(0,0,0,0.1);
   transform: rotate(-2deg);
