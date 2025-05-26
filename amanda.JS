@@ -52,9 +52,9 @@ function mensagemPorHorario() {
   if (hora >= 5 && hora < 12) {
     mensagem = "Bom dia, minha princesa 💕";
   } else if (hora >= 12 && hora < 18) {
-    mensagem = "Boa tarde, meu amor! Já almoçou? 😋";
+    mensagem = "Boa tarde, meu amor, Já almoçou? ";
   } else if (hora >= 18 && hora < 23) {
-    mensagem = "Boa noite, minha vida! Que dia lindo 😘";
+    mensagem = "Boa noite minha princesa, eu te amo muito❤";
   } else {
     mensagem = "Já era pra estar dormindo... 😴💤";
   }
