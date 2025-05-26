@@ -67,3 +67,28 @@ function mensagemPorHorario() {
 mensagemPorHorario();
 
 
+function ativarModoNoturno() {
+  const hora = new Date().getHours();
+
+  if (hora >= 18 || hora < 5) {
+    document.body.classList.add("night-mode");
+    criarEstrelas();
+  }
+}
+
+function criarEstrelas() {
+  for (let i = 0; i < 100; i++) {
+    const estrela = document.createElement("div");
+    estrela.classList.add("star");
+    estrela.style.top = Math.random() * 100 + "vh";
+    estrela.style.left = Math.random() * 100 + "vw";
+    estrela.style.animationDuration = (1 + Math.random() * 2) + "s";
+
+    document.body.appendChild(estrela);
+  }
+}
+
+ativarModoNoturno();
+
+
+
