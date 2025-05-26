@@ -42,3 +42,28 @@ function revealLetter() {
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
+function mensagemPorHorario() {
+  const agora = new Date();
+  const hora = agora.getHours();
+  const mensagemEl = document.getElementById("mensagemHora");
+
+  let mensagem = "";
+
+  if (hora >= 5 && hora < 12) {
+    mensagem = "Bom dia, minha princesa 💕";
+  } else if (hora >= 12 && hora < 18) {
+    mensagem = "Boa tarde, meu amor! Já almoçou? 😋";
+  } else if (hora >= 18 && hora < 23) {
+    mensagem = "Boa noite, minha vida! Que dia lindo 😘";
+  } else {
+    mensagem = "Já era pra estar dormindo... 😴💤";
+  }
+
+  if (mensagemEl) {
+    mensagemEl.textContent = mensagem;
+  }
+}
+
+mensagemPorHorario();
+
+
