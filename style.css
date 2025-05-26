@@ -265,3 +265,38 @@ header h1 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+body.night-mode {
+  background: linear-gradient(to bottom, #2d0057, #1a0033);
+  color: #f8e8ff;
+}
+
+body.night-mode .heart {
+  background: #e0b3ff;
+}
+
+body.night-mode .heart::before,
+body.night-mode .heart::after {
+  background: #e0b3ff;
+}
+
+/* Estrelas animadas */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
