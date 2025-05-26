@@ -18,7 +18,7 @@ function revealLetter() {
   
   setInterval(createHeart, 500);
   function atualizarContador() {
-  const inicio = new Date(2023, 3, 26); // 26 de abril de 2023 (mês 3 = abril)
+  const inicio = new Date(2025, 3, 26); // 26 de abril de 2025 (abril = mês 3)
   const agora = new Date();
   const diff = agora - inicio;
 
@@ -39,6 +39,6 @@ function revealLetter() {
   }
 }
 
-// Atualiza a cada segundo
 setInterval(atualizarContador, 1000);
-atualizarContador(); // Atualiza imediatamente ao carregar
+atualizarContador();
+
