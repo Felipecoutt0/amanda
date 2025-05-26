@@ -299,4 +299,10 @@ body.night-mode .heart::after {
   }
 }
 
+body.night-mode #mensagemHora {
+  color: #fcdfff;
+  text-shadow: 0 0 10px #d79eff;
+}
+
+
 
