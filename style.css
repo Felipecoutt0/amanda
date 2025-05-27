@@ -1,4 +1,4 @@
-/* Importando fonte manuscrita e sans-serif */
+/* Importando fontes */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
 
 body {
@@ -6,9 +6,9 @@ body {
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   background: linear-gradient(to bottom right, #ffd6e8, #e6ccff);
-  overflow-x: hidden;
-  position: relative;
   color: #5c0a3d;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 header {
@@ -21,6 +21,7 @@ header h1 {
   font-size: 2.5em;
   color: #d6336c;
 }
+
 #mensagemHora {
   font-size: 1.2em;
   margin-top: 10px;
@@ -28,8 +29,6 @@ header h1 {
   text-align: center;
   width: 100%;
 }
-
-
 
 .quote {
   font-size: 1.3em;
@@ -44,21 +43,22 @@ header h1 {
   gap: 25px;
   padding: 30px 20px;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .polaroid {
   width: 160px;
-  height 160px;
+  height: 160px;
   border: 8px solid #fff;
-  box-shadow: 5px 8px 15px rgba(0,0,0,0.1);
+  box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
   transform: rotate(-2deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   border-radius: 10px;
 }
 
 .polaroid:hover {
   transform: scale(1.05) rotate(1deg);
-  box-shadow: 6px 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 6px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .timeline {
@@ -97,7 +97,6 @@ header h1 {
   color: white;
   padding: 12px 25px;
   font-size: 1em;
-  font-family: 'Quicksand', sans-serif;
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
@@ -138,7 +137,19 @@ header h1 {
   }
 }
 
-/* Corações flutuando */
+.contador {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 1.3em;
+  color: #6a004c;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Corações flutuantes */
 .hearts-container {
   position: fixed;
   top: 0;
@@ -193,6 +204,44 @@ header h1 {
     transform: translateX(-40px) rotate(360deg);
   }
 }
+
+body.night-mode {
+  background: linear-gradient(to bottom, #2d0057, #1a0033);
+  color: #f8e8ff;
+}
+
+body.night-mode .heart,
+body.night-mode .heart::before,
+body.night-mode .heart::after {
+  background: #e0b3ff;
+}
+
+/* Estrelas animadas */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+body.night-mode #mensagemHora {
+  color: #fcdfff;
+  text-shadow: 0 0 10px #d79eff;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
   header h1 {
     font-size: 2em;
@@ -252,57 +301,3 @@ header h1 {
     font-size: 0.95em;
   }
 }
-
-.contador {
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 1.3em;
-  color: #6a004c;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
-  margin: 20px auto;
-  max-width: 500px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-body.night-mode {
-  background: linear-gradient(to bottom, #2d0057, #1a0033);
-  color: #f8e8ff;
-}
-
-body.night-mode .heart {
-  background: #e0b3ff;
-}
-
-body.night-mode .heart::before,
-body.night-mode .heart::after {
-  background: #e0b3ff;
-}
-
-/* Estrelas animadas */
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  animation: twinkle 2s infinite ease-in-out;
-  opacity: 0.8;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-body.night-mode #mensagemHora {
-  color: #fcdfff;
-  text-shadow: 0 0 10px #d79eff;
-}
-
-
-
