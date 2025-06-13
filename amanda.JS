@@ -46,7 +46,7 @@ function mensagemPorHorario() {
   let mensagem = "";
   if (hora >= 5 && hora < 12) mensagem = "Bom dia, minha princesa 💕";
   else if (hora >= 12 && hora < 18) mensagem = "Boa tarde, meu amor, já almoçou?";
-  else if (hora >= 18 && hora < 23) mensagem = "Boa noite minha princesa, eu te amo muito ❤";
+  else if (hora >= 18 && hora < 22) mensagem = "Boa noite minha princesa, eu te amo muito ❤";
   else mensagem = "Já era pra estar dormindo... 😴💤";
 
   if (mensagemEl) mensagemEl.textContent = mensagem;
