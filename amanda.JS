@@ -21,7 +21,7 @@ setInterval(createHeart, 500);
 
 // Atualiza o contador de tempo juntos ⏳
 function atualizarContador() {
-  const inicio = new Date(2025, 3, 26); // 26 de abril de 2025 (meses começam em 0)
+  const inicio = new Date(2025, 3, 22); // 26 de abril de 2025 (meses começam em 0)
   const agora = new Date();
   const diff = agora - inicio;
 
