@@ -77,7 +77,7 @@ function verificarMesversario() {
 
   const elemento = document.getElementById("mensagemMesversario");
 
-  if (diasPassados > 0 && diasPassados % 30 === 0) {
+  if (diasPassados > 0 && diasPassados % 1 === 0) {
     const meses = Math.floor(diasPassados / 30);
     elemento.textContent = `🎉 Hoje completamos ${meses} mês${meses > 1 ? "es" : ""} juntos, meu amor! 💕`;
   } else {
