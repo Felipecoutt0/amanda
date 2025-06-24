@@ -96,19 +96,23 @@ atualizarTempoProximoMes();
 function verificarMesversario() {
   const agora = new Date();
   const diaAtual = agora.getDate();
+  const mesAtual = agora.getMonth();
+  const anoAtual = agora.getFullYear();
+
   const elemento = document.getElementById("mensagemMesversario");
 
-  if (diaAtual === dataInicio.getDate()) {
-    let anos = agora.getFullYear() - dataInicio.getFullYear();
-    let meses = agora.getMonth() - dataInicio.getMonth() + anos * 12;
+  // Só mostra se for exatamente o dia 26
+  if (diaAtual === 26) {
+    let meses = (anoAtual - dataInicio.getFullYear()) * 12 + (mesAtual - dataInicio.getMonth());
 
-    if (meses > 0) {
-      elemento.textContent = `🎉 Hoje completamos ${meses} mês${meses > 1 ? "es" : ""} juntos, meu amor! 💕`;
+    // Garante que a data de início não está no futuro
+    if (meses >= 0) {
+      elemento.textContent = `🎉 Hoje completamos ${meses + 1} mês${meses > 0 ? "es" : ""} juntos, meu amor! 💕`;
     } else {
       elemento.textContent = "";
     }
   } else {
-    elemento.textContent = ""; // Esconde se não for dia 26
+    elemento.textContent = "";
   }
 }
 
