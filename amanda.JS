@@ -15,40 +15,43 @@ setInterval(createHeart, 500);
 // Contador de tempo juntos
 function atualizarContador() {
   const agora = new Date();
-  const diff = agora - dataInicio;
+  const dataUltimoMesversario = new Date(agora.getFullYear(), agora.getMonth(), 26);
 
-  const segundos = Math.floor(diff / 1000);
-  const minutos = Math.floor(segundos / 60);
-  const horas = Math.floor(minutos / 60);
-  let dias = Math.floor(horas / 24); // dias totais
-
-  let anos = agora.getFullYear() - dataInicio.getFullYear();
-  let meses = agora.getMonth() - dataInicio.getMonth();
-  let diasRestantes = agora.getDate() - dataInicio.getDate();
-
-  if (diasRestantes < 0) {
-    meses--;
-    const diasMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
-    diasRestantes += diasMesAnterior;
+  // Se ainda não chegou o dia 26 neste mês, usa o mês anterior
+  if (agora.getDate() < 26) {
+    dataUltimoMesversario.setMonth(dataUltimoMesversario.getMonth() - 1);
   }
 
+  // Calcula anos e meses desde dataInicio
+  let anos = agora.getFullYear() - dataInicio.getFullYear();
+  let meses = agora.getMonth() - dataInicio.getMonth();
+  if (agora.getDate() < dataInicio.getDate()) {
+    meses--;
+  }
   if (meses < 0) {
     anos--;
     meses += 12;
   }
 
-  // ✅ Zera os dias se hoje for o dia 26
-  if (agora.getDate() === 26) {
-    dias = 0;
-  }
+  const diffDesdeUltimoMesversario = agora - dataUltimoMesversario;
+  const segundosTotais = Math.floor(diffDesdeUltimoMesversario / 1000);
+  const minutosTotais = Math.floor(segundosTotais / 60);
+  const horasTotais = Math.floor(minutosTotais / 60);
+  const dias = Math.floor(horasTotais / 24);
 
+  const horas = horasTotais % 24;
+  const minutos = minutosTotais % 60;
+  const segundos = segundosTotais % 60;
+
+  // Monta texto
   let texto = "";
   if (anos > 0) texto += `${anos} ano${anos > 1 ? "s" : ""}, `;
   if (meses > 0) texto += `${meses} mês${meses > 1 ? "es" : ""}, `;
-  texto += `${dias} dias, ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos`;
+  texto += `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
 
   document.getElementById("tempoJuntos").textContent = texto;
 }
+
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
