@@ -113,11 +113,15 @@ function verificarMesversario() {
 
     while (tempDate <= agora) {
       tempDate.setMonth(tempDate.getMonth() + 1);
-      if (tempDate.getDate() === diaInicio || (tempDate.getMonth() === mesAtual && tempDate.getDate() > diaAtual)) { // Ajuste para o último dia do mês
+      // Ajuste para o último dia do mês:
+      // Se o mês de `tempDate` é o mesmo do `agora` e o dia de `tempDate` já passou do dia atual,
+      // significa que o mesversário desse mês já deveria ter sido contado.
+      // Ou, se o dia de `tempDate` é exatamente o dia de início.
+      if (tempDate.getDate() === diaInicio || (tempDate.getMonth() === mesAtual && tempDate.getDate() > diaAtual)) { 
          mesesCompletos++;
       }
     }
-    // Subtrai 1 pois o loop adiciona um mês extra ao ultrapassar o "agora"
+    // Subtrai 1, pois o loop adiciona um mês extra ao ultrapassar o "agora"
     mesesCompletos--; 
 
 
