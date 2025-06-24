@@ -66,28 +66,26 @@ function atualizarContador() {
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
-
-// Atualiza o temporizador para o próximo mês juntos
+// Atualiza o temporizador para o próximo dia 26
 function atualizarTempoProximoMes() {
-    const agora = new Date();
-    let proximoMesversario = new Date(dataInicio.getFullYear(), dataInicio.getMonth(), dataInicio.getDate());
+  const agora = new Date();
+  let proximoMesversario = new Date(agora.getFullYear(), agora.getMonth(), 26);
 
-    // Encontra o próximo dia 26
-    while (proximoMesversario <= agora) {
-        proximoMesversario.setMonth(proximoMesversario.getMonth() + 1);
-    }
+  if (agora.getDate() > 26 || (agora.getDate() === 26 && agora.getHours() >= 0)) {
+    proximoMesversario.setMonth(proximoMesversario.getMonth() + 1);
+  }
 
-    const diffRestante = proximoMesversario - agora;
+  const diffRestante = proximoMesversario - agora;
 
-    const segundos = Math.floor(diffRestante / 1000);
-    const minutos = Math.floor(segundos / 60);
-    const horas = Math.floor(minutos / 60);
-    const dias = Math.floor(horas / 24);
+  const segundos = Math.floor(diffRestante / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
 
-    const texto = `⏳ Faltam ${dias} dias, ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos para completarmos mais um mês juntos 💖`;
+  const texto = `⏳ Faltam ${dias} dias, ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos para completarmos mais um mês juntos 💖`;
 
-    const elemento = document.getElementById("tempoProximoMes");
-    if (elemento) elemento.textContent = texto;
+  const elemento = document.getElementById("tempoProximoMes");
+  if (elemento) elemento.textContent = texto;
 }
 
 // Atualiza o temporizador do próximo mês a cada segundo
@@ -98,44 +96,23 @@ atualizarTempoProximoMes();
 function verificarMesversario() {
   const agora = new Date();
   const diaAtual = agora.getDate();
-  const mesAtual = agora.getMonth();
-  const anoAtual = agora.getFullYear();
-
-  const diaInicio = dataInicio.getDate();
-  const mesInicio = dataInicio.getMonth();
-  const anoInicio = dataInicio.getFullYear();
-
   const elemento = document.getElementById("mensagemMesversario");
 
-  if (diaAtual === diaInicio) {
-    let mesesCompletos = 0;
-    let tempDate = new Date(dataInicio);
+  if (diaAtual === dataInicio.getDate()) {
+    let anos = agora.getFullYear() - dataInicio.getFullYear();
+    let meses = agora.getMonth() - dataInicio.getMonth() + anos * 12;
 
-    while (tempDate <= agora) {
-      tempDate.setMonth(tempDate.getMonth() + 1);
-      // Ajuste para o último dia do mês:
-      // Se o mês de `tempDate` é o mesmo do `agora` e o dia de `tempDate` já passou do dia atual,
-      // significa que o mesversário desse mês já deveria ter sido contado.
-      // Ou, se o dia de `tempDate` é exatamente o dia de início.
-      if (tempDate.getDate() === diaInicio || (tempDate.getMonth() === mesAtual && tempDate.getDate() > diaAtual)) { 
-         mesesCompletos++;
-      }
-    }
-    // Subtrai 1, pois o loop adiciona um mês extra ao ultrapassar o "agora"
-    mesesCompletos--; 
-
-
-    if (mesesCompletos > 0) {
-      elemento.textContent = `🎉 Hoje completamos ${mesesCompletos} mês${mesesCompletos > 1 ? "es" : ""} juntos, meu amor! 💕`;
+    if (meses > 0) {
+      elemento.textContent = `🎉 Hoje completamos ${meses} mês${meses > 1 ? "es" : ""} juntos, meu amor! 💕`;
     } else {
       elemento.textContent = "";
     }
   } else {
-    elemento.textContent = ""; // Esconde se não for dia exato
+    elemento.textContent = ""; // Esconde se não for dia 26
   }
 }
 
-// Executa a verificação do mesversário a cada 1 minuto (pode ser maior intervalo)
+// Executa a verificação do mesversário a cada 1 minuto
 setInterval(verificarMesversario, 60000);
 verificarMesversario();
 
