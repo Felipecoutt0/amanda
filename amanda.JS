@@ -38,6 +38,35 @@ function atualizarContador() {
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
+function atualizarTempoProximoMes() {
+  const inicio = new Date(2025, 3, 26); // 26 de abril de 2025
+  const agora = new Date();
+
+  // Quantos meses se passaram desde o início
+  const anos = agora.getFullYear() - inicio.getFullYear();
+  const mesesPassados = anos * 12 + agora.getMonth() - inicio.getMonth();
+
+  // Próximo "aniversário mensal"
+  const proximoMes = new Date(inicio);
+  proximoMes.setMonth(inicio.getMonth() + mesesPassados + 1);
+
+  const diff = proximoMes - agora;
+
+  const segundos = Math.floor(diff / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
+
+  const texto = `⏳ Faltam ${dias} dias, ${horas % 24} horas, ${minutos % 60} minutos e ${segundos % 60} segundos para completarmos mais um mês juntos 💖`;
+
+  const elemento = document.getElementById("tempoProximoMes");
+  if (elemento) elemento.textContent = texto;
+}
+
+setInterval(atualizarTempoProximoMes, 1000);
+atualizarTempoProximoMes();
+
+
 // Mensagem automática por horário
 function mensagemPorHorario() {
   const hora = new Date().getHours();
