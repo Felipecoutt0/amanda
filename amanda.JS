@@ -81,7 +81,7 @@ function verificarMesversario() {
     if (agora.getDate() === 26) {
         const meses = (agora.getFullYear() - dataInicio.getFullYear()) * 12 + (agora.getMonth() - dataInicio.getMonth());
         // A correção está nesta linha: removido o '+ 1' e ajustada a pluralização
-        document.getElementById("mensagemMesversario").textContent = `🎉 Hoje completamos ${meses} mês${meses > 1 || meses === 0 ? "es" : ""} juntos, meu amor! 💕`;
+        document.getElementById("mensagemMesversario").textContent = `🎉 Hoje completamos ${meses} mes${meses > 1 || meses === 0 ? "es" : ""} juntos, meu amor! 💕`;
     } else {
         document.getElementById("mensagemMesversario").textContent = "";
     }
