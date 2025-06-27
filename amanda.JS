@@ -46,7 +46,7 @@ function atualizarContador() {
     // Monta texto
     let texto = "";
     if (anos > 0) texto += `${anos} ano${anos > 1 ? "s" : ""}, `;
-    if (meses > 0) texto += `${meses} mês${meses > 1 ? "es" : ""}, `;
+    if (meses > 0) texto += `${meses} mes${meses > 1 ? "es" : ""}, `;
     texto += `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
 
     document.getElementById("tempoJuntos").textContent = texto;
